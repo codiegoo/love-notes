@@ -12,6 +12,7 @@
     "@sendgrid/mail": "^8.1.4",
     "dotenv": "^16.4.7",
     "googleapis": "^144.0.0",
+    "moment-timezone": "^0.5.47",
     "mongoose": "^8.10.0",
     "next": "15.1.6",
     "node-cron": "^3.0.3",

@@ -1,7 +1,7 @@
 import schedule from 'node-schedule';
 import sgMail from '@sendgrid/mail';
 import Cartas from '@/models/Carta';
-
+import moment from 'moment-timezone'; // Importa moment-timezone para manejar zonas horarias
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
@@ -13,8 +13,14 @@ export async function scheduleEmails() {
     cartas.forEach((carta) => {
       const { fecha, texto } = carta;
 
-      if (fecha > new Date()) {
-        schedule.scheduleJob(fecha, () => {
+      // Convertir la fecha de UTC a la zona horaria local
+      const fechaUTC = moment(fecha); // Fecha en UTC de MongoDB
+      const zonaHorariaLocal = 'America/Mexico_City'; // Reemplaza con la zona horaria de tu servidor
+      const fechaLocal = fechaUTC.tz(zonaHorariaLocal);
+
+      // Verificar si la fecha ya pasó
+      if (fechaLocal > moment()) {
+        schedule.scheduleJob(fechaLocal.toDate(), () => {
           const msg = {
             to: 'codiegodev@gmail.com', // Reemplaza con el correo del destinatario
             from: 'codiegodev@gmail.com', // Reemplaza con tu correo verificado en SendGrid
