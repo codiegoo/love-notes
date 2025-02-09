@@ -17,6 +17,7 @@ export async function scheduleEmails() {
       const fechaUTC = moment(fecha); // Fecha en UTC de MongoDB
       const zonaHorariaLocal = 'America/Mexico_City'; // Reemplaza con la zona horaria de tu servidor
       const fechaLocal = fechaUTC.tz(zonaHorariaLocal);
+      console.log(fechaLocal)
 
       // Verificar si la fecha ya pasó
       if (fechaLocal > moment()) {
