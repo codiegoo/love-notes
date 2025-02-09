@@ -6,11 +6,7 @@ const collectionName = "notes"
 
 const collectionSchema = new mongoose.Schema({
   fecha: {
-    type: String,
-    required: true,
-  },
-  hora: {
-    type: String,
+    type: Date,
     required: true,
   },
   texto: {
