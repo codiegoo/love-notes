@@ -18,11 +18,13 @@ export async function scheduleEmails() {
       const zonaHorariaLocal = 'America/Mexico_City'; // Reemplaza con la zona horaria de tu servidor
       const fechaLocal = fechaUTC.tz(zonaHorariaLocal);
 
+      console.log(fechaLocal)
+
       // Verificar si la fecha ya pasó
       if (fechaLocal > moment()) {
         schedule.scheduleJob(fechaLocal.toDate(), () => {
           const msg = {
-            to: 'diegoedvflores03@gmail.com', // Reemplaza con el correo del destinatario
+            to: 'codiegodev@gmail.com', // Reemplaza con el correo del destinatario
             from: 'codiegodev@gmail.com', // Reemplaza con tu correo verificado en SendGrid
             subject: 'Nota de amor',
             text: texto,
