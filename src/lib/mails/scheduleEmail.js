@@ -22,7 +22,7 @@ export async function scheduleEmails() {
       if (fechaLocal > moment()) {
         schedule.scheduleJob(fechaLocal.toDate(), () => {
           const msg = {
-            to: 'codiegodev@gmail.com', // Reemplaza con el correo del destinatario
+            to: 'diegoedvflores03@gmail.com', // Reemplaza con el correo del destinatario
             from: 'codiegodev@gmail.com', // Reemplaza con tu correo verificado en SendGrid
             subject: 'Nota de amor',
             text: texto,
