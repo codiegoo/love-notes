@@ -27,7 +27,7 @@ export async function scheduleEmails() {
             to: 'codiegodev@gmail.com', // Reemplaza con el correo del destinatario
             from: 'codiegodev@gmail.com', // Reemplaza con tu correo verificado en SendGrid
             subject: 'Nota de amor',
-            text: texto,
+            text: texto
           };
 
           sgMail
