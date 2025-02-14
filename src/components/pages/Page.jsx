@@ -1,9 +1,10 @@
 'use client'
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import './page.sass'
 
 export default function Page({ onNext }) {
-  const texto = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, velit!";
+  const texto = "Esto fue programado con mucho amor para el amor de mi vida, que nunca se pierdan los pequeños detalles en nuestra relacion, te amo Nidian ❤";
   const [displayedText, setDisplayedText] = useState("");
   const [index, setIndex] = useState(0);
 
@@ -12,19 +13,19 @@ export default function Page({ onNext }) {
       const timeout = setTimeout(() => {
         setDisplayedText((prev) => prev + texto[index]);
         setIndex(index + 1);
-      }, 100); // Velocidad de escritura
+      }, 50); // Velocidad de escritura
 
       return () => clearTimeout(timeout);
     }
   }, [index, texto]);
 
   return (
-    <>
+    <div className="pageContain">
+      <Image width={400} height={400} src="/images/img6.png" alt="Imagen"/>
       <h1 className="text-3xl font-bold">{displayedText}</h1>
-      {/* <Image width={300} height={300} src="/images/img6.png" alt="Imagen"/> */}
-      <button onClick={onNext} className="mt-4 p-2 bg-red-500 text-white rounded">
+      <button onClick={onNext}>
         Continuar❤
       </button>
-    </>
+    </div>
   );
 }

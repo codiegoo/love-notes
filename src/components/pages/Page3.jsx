@@ -19,12 +19,12 @@ export default function Page3({ onNext }) {
   }, [index, texto]);
 
   return (
-    <>
-      <h1 className="text-3xl font-bold">{displayedText}</h1>
-      {/* <Image width={300} height={300} src="/images/img6.png" alt="Imagen"/> */}
+    <div className="pageContain">
+      <Image width={600} height={400} src="/images/img5.png" alt="Imagen"/>
+      <h1>{displayedText}</h1>
       <button onClick={onNext} className="mt-4 p-2 bg-red-500 text-white rounded">
         Continuar❤
       </button>
-    </>
+    </div>
   );
 }

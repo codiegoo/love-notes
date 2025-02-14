@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import './page.sass'
 
 export default function Page2({ onNext }) {
   const texto = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, velit!";
@@ -19,12 +20,15 @@ export default function Page2({ onNext }) {
   }, [index, texto]);
 
   return (
-    <>
-      <h1 className="text-3xl font-bold">{displayedText}</h1>
-      {/* <Image width={300} height={300} src="/images/img6.png" alt="Imagen"/> */}
-      <button onClick={onNext} className="mt-4 p-2 bg-red-500 text-white rounded">
+    <div className="pageContain">
+      <div className="imageContain">
+        <Image width={200} height={400} src="/images/img1.png" alt="Imagen"/>
+        <Image width={200} height={400} src="/images/img2.png" alt="Imagen"/>
+      </div>
+      <h1 >{displayedText}</h1>
+      <button onClick={onNext}>
         Continuar❤
       </button>
-    </>
+    </div>
   );
 }

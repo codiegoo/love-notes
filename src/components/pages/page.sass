@@ -1,0 +1,32 @@
+.pageContain
+  width: 90%
+  margin: 0 auto
+  text-align: center
+  height: 100vh
+  display: flex
+  flex-direction: column
+  justify-content: top
+  align-items: center
+  h1
+    color: white
+    font-size: 2.2rem
+    font-weight: bold
+    text-shadow: 0 0 2px #ff0000, 0 0 6.5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 50px #ff0000
+    animation: neon-blink 1.5s infinite alternate
+  button
+    width: 15%
+    height: 2rem
+    background: #ff0000
+    border: none
+    border-radius: .2rem
+    margin-top: 1rem
+    &:hover
+      cursor: pointer
+
+
+@keyframes neon-blink
+  0%
+    text-shadow: 0 0 2px #fff, 0 0 6.5px #fff, 0 0 10px #ffffff,0 0 15px #ffffff, 0 020px #ffffff, 0 0 30px #ffffff, 0 0 40px #ffffff, 0 0 50px, #ffffff
+
+  100%
+    text-shadow: 0 0 2px #fff, 0 0 6.5px #fff, 0 0 10px #ffffff, 0 0 15px #ffffff, 0 0 20px #ffff0 0 30px #ffffff, 0 0 40px #ffffff, 0 0 50px, #ffffff

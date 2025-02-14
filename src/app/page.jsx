@@ -3,6 +3,7 @@ import Page from "@/components/pages/Page";
 import Page1 from "@/components/pages/Page1";
 import Page2 from "@/components/pages/Page2";
 import Page3 from "@/components/pages/Page3";
+import Page4 from "@/components/pages/Page4";
 import Particle from "@/components/ParticleBackground/Particle";
 import { useState } from "react";
 
@@ -15,12 +16,12 @@ export default function Home() {
     <Page key={0} onNext={() => setCurrentPage(1)} />,
     <Page1 key={1} onNext={() => setCurrentPage(2)} />,
     <Page2 key={2} onNext={() => setCurrentPage(3)} />,
-    <Page3 key={3} onNext={() => console.log("Fin del recorrido")} />, // Última página
-  ];
-
+    <Page3 key={3} onNext={() => setCurrentPage(4)} />,
+    <Page4 key={4} onNext={() => console.log("Fin del recorrido")}/>
+    ]
   return (
     <>
-      {/* <Particle/> */} {/* Descomenta si lo necesitas */}
+      <Particle/>
       {pages[currentPage]}
     </>
   );

@@ -12,37 +12,43 @@ export async function scheduleEmails() {
 
     cartas.forEach((carta) => {
       const { fecha, texto } = carta;
-
-      // Convertir la fecha de UTC a la zona horaria local
-      const fechaUTC = moment(fecha); // Fecha en UTC de MongoDB
-      const zonaHorariaLocal = 'America/Mexico_City'; // Reemplaza con la zona horaria de tu servidor
+    
+      // Convertimos la fecha UTC a la zona horaria local
+      const fechaUTC = moment(fecha);
+      const zonaHorariaLocal = 'America/Mazatlan';
       const fechaLocal = fechaUTC.tz(zonaHorariaLocal);
-
-      console.log(fechaLocal)
-
-      // Verificar si la fecha ya pasó
-      if (fechaLocal > moment()) {
-        schedule.scheduleJob(fechaLocal.toDate(), () => {
-          const msg = {
-            to: 'codiegodev@gmail.com', // Reemplaza con el correo del destinatario
-            from: 'codiegodev@gmail.com', // Reemplaza con tu correo verificado en SendGrid
-            subject: 'Nota de amor',
-            text: texto
-          };
-
-          sgMail
-            .send(msg)
-            .then(() => {
-              console.log(`Correo enviado a codiegodev`);
-            })
-            .catch((error) => {
-              console.error('Error al enviar el correo:', error);
-            });
-        });
+    
+      // Tomamos solo la fecha y la hora sin minutos ni segundos
+      const fechaCarta = fechaLocal.format('YYYY-MM-DD HH'); // Formato: "2025-02-14 06"
+      const fechaActual = moment().tz(zonaHorariaLocal).format('YYYY-MM-DD HH');
+    
+      console.log(`Fecha actual: ${fechaActual}`);
+      console.log(`Fecha de la carta: ${fechaCarta}`);
+    
+      // Comparamos solo la fecha y la hora
+      if (fechaCarta === fechaActual) {
+        console.log(`Enviando correo para la carta: "${texto}"`);
+    
+        const msg = {
+          to: 'codiegodev@gmail.com',
+          from: 'codiegodev@gmail.com',
+          subject: 'Nota de amor',
+          text: texto,
+        };
+    
+        sgMail
+          .send(msg)
+          .then(() => {
+            console.log(`Correo enviado a codiegodev`);
+          })
+          .catch((error) => {
+            console.error('Error al enviar el correo:', error);
+          });
       } else {
-        console.log(`La fecha de envío para la carta con texto "${texto}" ya ha pasado.`);
+        console.log(`Aún no es la hora para enviar la carta: "${texto}"`);
       }
     });
+    
   } catch (error) {
     console.error('Error al programar los correos:', error);
   }
