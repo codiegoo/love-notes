@@ -30,7 +30,7 @@ export async function scheduleEmails() {
         console.log(`Enviando correo para la carta: "${texto}"`);
     
         const msg = {
-          to: 'codiegodev@gmail.com',
+          to: 'marleth201059@gmail.com',
           from: 'codiegodev@gmail.com',
           subject: 'Nota de amor',
           text: texto,
